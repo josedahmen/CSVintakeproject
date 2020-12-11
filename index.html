@@ -63,8 +63,17 @@
 	    <div class="form-group">
 	      <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
 		
+		<button type="submit" id="submit-file"" onmouseover="myFunction()" onclick="alert('clicked')">
+
 		<script>
-		onclick=
+			// On mouse-over, execute myFunction
+		function myFunction() {
+  			document.getElementById("myCheck").click(); // Click on the checkbox
+		}
+		</script>
+		    
+		<script>
+		
 		  $('#files').parse({
 			config: {
 				delimiter: "auto",
@@ -83,6 +92,7 @@
 				//console.log("Done with all files");
 			}
 			});
+			
 			function displayHTMLTable(results){
 				var table = "<table class='table'>";
 				var data = results.data;
