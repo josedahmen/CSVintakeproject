@@ -62,7 +62,9 @@
 	    </div>
 	    <div class="form-group">
 	      <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
-		    $('#files').parse({
+	    </div>	   
+		    
+	    $('#files').parse({
 		config: {
 			delimiter: "auto",
 			complete: displayHTMLTable,
@@ -101,7 +103,7 @@ function displayHTMLTable(results){
 	$("#parsed_csv_list").html(table);
 }
 
-	    </div>
+	    
     </form>
 
   	
