@@ -67,9 +67,10 @@
     </form>
     <table id="tbl-data">
 		
-    </table>	  
+    </table>
+	  
     <script type="text/javascript">
-		let btn_upload = document.getElementById('submit-file').addEventListener('click', ()=> {
+		let submit_file = document.getElementById('submit-file').addEventListener('click', ()=> {
 
 			Papa.parse(document.getElementById('files').files[0], {
 				download: true,
