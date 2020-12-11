@@ -61,62 +61,66 @@
 	      <input type="file" id="files"  class="form-control" accept=".csv" required />
 	    </div>
 	    <div class="form-group">
-	      <button type="submit" id="submit-file" class="btn btn-primary" onclick="myFunction()">Upload File</button>
+	      <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
+	    </div>
+    </form>
+    <table id="tbl-data">
 		
+    </table>	  
+    <script type="text/javascript">
+		let btn_upload = document.getElementById('submit-file').addEventListener('click', ()=> {
 
-		<script>
-		function myFunction() {  
-			
-		  $('#files').parse({
-			config: {
-				delimiter: "auto",
-				complete: displayHTMLTable,
-			},
-			before: function(file, inputElem)
-			{
-				//console.log("Parsing file...", file);
-			},
-			error: function(err, file)
-			{
-				//console.log("ERROR:", err, file);
-			},
-			complete: function()
-			{
-				//console.log("Done with all files");
-			}
-			});
-		    	
-		}
-	
-		function displayHTMLTable(results){
-				var table = "<table class='table'>";
-				var data = results.data;
-	 
-				for(i=0;i<data.length;i++){
-					table+= "<tr>";
-					var row = data[i];
-					var cells = row.join(",").split(",");
-		 
-					for(j=0;j<cells.length;j++){
-						table+= "<td>";
-						table+= cells[j];
-						table+= "</th>";
-					}
-					table+= "</tr>";
+			Papa.parse(document.getElementById('files').files[0], {
+				download: true,
+				header: true,
+				complete: function(results) {
+					console.log(results);
+					/*
+					let i = 0;
+					results.data.map((data, index)=> {
+						if (i === 0) {
+							let table = document.getElementById('tbl-data');
+							generateTableHead(table, data);
+						} else {
+							let table = document.getElementById('tbl-data');
+							generateTableRows(table, data);
+						}
+						i++;
+					});
+					*/
 				}
-				table+= "</table>";
-				$("#parsed_csv_list").html(table);
+			});
+		});
+
+		function generateTableHead(table, data) {
+			let thead = table.createTHead();
+			let row = thead.insertRow();
+			for(let key of data) {
+				let th = document.createElement('th');
+				let text = document.createTextNode(key);
+				th.appendChild(text);
+				row.appendChild(th);
 			}
+		}
+
+		function generateTableRows(table, data) {
+			let newRow = table.insertRow(-1);
+			data.map((row, index)=> {
+				let newCell = newRow.insertCell();
+				let newText = document.createTextNode(row);
+				newCell.appendChild(newText);
+			});
+		}
+	</script>    
+
+		
 		    
-                
-		</script>
-		    
-	    </div>	   
+	   
 	  
 	    
 
 	    
-    </form>
+    
 
   	
     
