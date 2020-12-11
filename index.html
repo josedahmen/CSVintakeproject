@@ -61,19 +61,13 @@
 	      <input type="file" id="files"  class="form-control" accept=".csv" required />
 	    </div>
 	    <div class="form-group">
-	      <button type="submit" id="submit-file" class="btn btn-primary">Upload File</button>
+	      <button type="submit" id="submit-file" class="btn btn-primary" onclick="myFunction()">Upload File</button>
 		
-		<button type="submit" id="submit-file"" onmouseover="myFunction()" onclick="alert('clicked')">
 
 		<script>
 			// On mouse-over, execute myFunction
 		function myFunction() {
   			document.getElementById("myCheck").click(); // Click on the checkbox
-		}
-		</script>
-		    
-		<script>
-		
 		  $('#files').parse({
 			config: {
 				delimiter: "auto",
@@ -112,8 +106,8 @@
 				table+= "</table>";
 				$("#parsed_csv_list").html(table);
 			}
-
-		</script>  
+                }
+		</script>
 		    
 	    </div>	   
 	  
